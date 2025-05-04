@@ -22,6 +22,7 @@ WORKDIR /app
 COPY ./src/flagd-ui/package*.json ./
 
 RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 COPY --from=builder /app/src/instrumentation.ts ./instrumentation.ts
 COPY --from=builder /app/next.config.mjs ./next.config.mjs
